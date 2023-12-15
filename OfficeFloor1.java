@@ -1,17 +1,20 @@
 package org.example;
 
-public class DwellingFloor {
+import org.example.impl.Floor;
+import org.example.impl.Space;
+
+public class OfficeFloor1 {
     private office[] flats;
 
     // Конструктор 1
-    public DwellingFloor(int numberOfFlats) {
-        flats = new office[numberOfFlats];
+    public OfficeFloor1(int numberOfFlats) {
+        flats = new office [numberOfFlats];
         for (int i = 0; i < numberOfFlats; i++) {
-            flats[i] = new office();
+            flats[i] = new office () ;
         }
     }
     // Конструктор 2
-    public DwellingFloor(office[] flatsArray) {
+    public OfficeFloor1(office[] flatsArray) {
         flats = flatsArray;
     }
 
@@ -87,6 +90,7 @@ public class DwellingFloor {
         }
     }
 
+
     // Метод для получения самой большой по площади квартиры этажа
     public office getBestSquare() {
         office bestFlat = flats[0];
@@ -97,4 +101,123 @@ public class DwellingFloor {
         }
         return bestFlat;
     }
+}
+class OfficeFloor implements Floor {
+    private Space[] flats;
+
+    @Override
+    public int getTotalFlats() {
+        return flats.length;
+    }
+
+    @Override
+    public int getFlatsSquare() {
+        int totalSquare = 0;
+        for (Space flat : flats) {
+            totalSquare += flat.getSquare();
+        }
+        return totalSquare;
+    }
+
+    @Override
+    public int getFlatsQuantity() {
+        int totalQuantity = 0;
+        for (Space flat : flats) {
+            totalQuantity += flat.getQuantity();
+        }
+        return totalQuantity;
+    }
+
+    @Override
+    public Space[] getFlats() {
+        return new Space[0];
+    }
+
+    @Override
+    public Space getFlat(int index) {
+        return null;
+    }
+
+    @Override
+    public void setFlat(int index, Space newFlat) {
+
+    }
+
+    @Override
+    public void addFlat(int index, Space newFlat) {
+
+    }
+
+    @Override
+    public void deleteFlat(int index) {
+
+    }
+
+    // ... (другие методы интерфейса Floor)
+
+    // Имплементация метода, использующая интерфейс Space вместо класса Flat
+    @Override
+    public Space getBestSquare() {
+        Space bestFlat = null;
+        double maxSquare = 0;
+        for (Space flat : flats) {
+            if (flat.getSquare() > maxSquare) {
+                maxSquare = flat.getSquare();
+                bestFlat = flat;
+            }
+        }
+        return bestFlat;
+    }
+}
+
+// Класс OfficeFloor
+class officefloor implements Floor {
+    private Space[] offices;
+
+    @Override
+    public int getTotalFlats() {
+        return 0;
+    }
+
+    @Override
+    public int getFlatsSquare() {
+        return 0;
+    }
+
+    @Override
+    public int getFlatsQuantity() {
+        return 0;
+    }
+
+    @Override
+    public Space[] getFlats() {
+        return new Space[0];
+    }
+
+    @Override
+    public Space getFlat(int index) {
+        return null;
+    }
+
+    @Override
+    public void setFlat(int index, Space newFlat) {
+
+    }
+
+    @Override
+    public void addFlat(int index, Space newFlat) {
+
+    }
+
+    @Override
+    public void deleteFlat(int index) {
+
+    }
+
+    @Override
+    public Space getBestSquare() {
+        return null;
+    }
+
+    // ... (имплементация методов интерфейса Floor используя интерфейс Space)
 }

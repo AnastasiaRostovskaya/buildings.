@@ -1,29 +1,28 @@
 package org.example;
-import lombok.Data;
 
-@Data  // Аннотация Lombok
-public class Flat extends AbstractSpace {
-    private double square;
-    private int quantity;
-
+public abstract class AbstractSpace {
     // Константы для значений по умолчанию
     private static final int DEFAULT_ROOMS = 2;
     private static final double DEFAULT_SQUARE = 50.0;
 
+    // Переменные для хранения данных о квартире
+    private double square; // площадь
+    private int quantity; // количество комнат
+
     // Конструктор 1 по умолчанию
-    public Flat() {
+    public AbstractSpace() {
         square = DEFAULT_SQUARE;
         quantity = DEFAULT_ROOMS;
     }
 
     // Конструктор 2 с указанной площадью и 2 комнатами
-    public Flat(double square) {
+    public AbstractSpace(double square) {
         this.square = square;
         quantity = DEFAULT_ROOMS;
     }
 
     // Конструктор 3 с указанной площадью и количеством комнат
-    public Flat(double square, int quantity) {
+    public AbstractSpace(double square, int quantity) {
         this.square = square;
         this.quantity = quantity;
     }
